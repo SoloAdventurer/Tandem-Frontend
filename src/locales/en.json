@@ -1,0 +1,43 @@
+{
+  "common": {
+    "welcome": "Find your study partner in 2 minutes",
+    "findPartner": "Find Partner",
+    "cancel": "Cancel",
+    "submit": "Submit"
+  },
+  "timer": {
+    "title": "Timer",
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "complete": "Time is up!"
+  },
+  "badges": {
+    "title": "Badges",
+    "level": "Level {{level}}",
+    "active": "Active",
+    "break": "Break",
+    "incomplete": "Incomplete",
+    "newFeature": "New Feature",
+    "small": "Small",
+    "large": "Large"
+  },
+  "modal": {
+    "title": "Modal",
+    "openButton": "Open Modal",
+    "checkInTitle": "Check-in Time!",
+    "checkInMessage": "Show your partner what you've accomplished!",
+    "completedLabel": "What did you complete?",
+    "completedPlaceholder": "Describe your progress..."
+  },
+  "input": {
+    "title": "Input Fields",
+    "taskLabel": "Task Name",
+    "taskPlaceholder": "What are you working on?"
+  },
+  "session": {
+    "duration": "Session Duration",
+    "workingOn": "What are you working on?",
+    "confirmPartner": "Confirm your partner was present"
+  }
+}

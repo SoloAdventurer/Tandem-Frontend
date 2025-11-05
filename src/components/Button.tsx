@@ -1,24 +1,32 @@
+import React from "react";
+
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "danger";
+  variant?: "primary" | "secondary" | "success" | "danger" | "ghost";
   onClick?: () => void;
   disabled?: boolean;
 }
 
-export default function Button({
+const Button: React.FC<ButtonProps> = ({
   children,
   variant = "primary",
   onClick,
   disabled,
-}: ButtonProps) {
+}) => {
   const baseStyles =
-    "px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
 
   const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
+    primary:
+      "bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-md",
     secondary:
-      "bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500",
-    danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
+      "bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500 shadow-sm hover:shadow-md",
+    success:
+      "bg-success-500 text-white hover:bg-success-600 focus:ring-success-500 shadow-sm hover:shadow-md",
+    danger:
+      "bg-danger-500 text-white hover:bg-danger-600 focus:ring-danger-500 shadow-sm hover:shadow-md",
+    ghost:
+      "bg-transparent text-neutral-700 hover:bg-neutral-100 focus:ring-neutral-500",
   };
 
   return (
@@ -32,4 +40,6 @@ export default function Button({
       {children}
     </button>
   );
-}
+};
+
+export default Button;

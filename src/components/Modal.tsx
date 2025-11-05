@@ -38,10 +38,10 @@ const Modal: React.FC<ModalProps> = ({
         {/* Header */}
         {title && (
           <div className="flex items-center justify-between p-6 border-b">
-            <h3 className="text-xl font-semibold">{title}</h3>
+            <h3 className="text-neutral-900 text-xl font-semibold">{title}</h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-neutral-400 hover:text-neutral-600 transition-colors"
             >
               <svg
                 className="w-6 h-6"

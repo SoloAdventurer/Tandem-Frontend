@@ -1,0 +1,43 @@
+{
+  "common": {
+    "welcome": "اعثر على شريك الدراسة في دقيقتين",
+    "findPartner": "ابحث عن شريك",
+    "cancel": "إلغاء",
+    "submit": "إرسال"
+  },
+  "timer": {
+    "title": "المؤقت",
+    "start": "ابدأ",
+    "pause": "إيقاف مؤقت",
+    "reset": "إعادة تعيين",
+    "complete": "انتهى الوقت!"
+  },
+  "badges": {
+    "title": "الشارات",
+    "level": "المستوى {{level}}",
+    "active": "نشط",
+    "break": "استراحة",
+    "incomplete": "غير مكتمل",
+    "newFeature": "ميزة جديدة",
+    "small": "صغير",
+    "large": "كبير"
+  },
+  "modal": {
+    "title": "نافذة منبثقة",
+    "openButton": "افتح النافذة",
+    "checkInTitle": "وقت التحقق!",
+    "checkInMessage": "أظهر لشريكك ما أنجزته!",
+    "completedLabel": "ماذا أكملت؟",
+    "completedPlaceholder": "صف تقدمك..."
+  },
+  "input": {
+    "title": "حقول الإدخال",
+    "taskLabel": "اسم المهمة",
+    "taskPlaceholder": "على ماذا تعمل؟"
+  },
+  "session": {
+    "duration": "مدة الجلسة",
+    "workingOn": "ماذا تعمل؟",
+    "confirmPartner": "أكد حضور شريكك"
+  }
+}

@@ -6,53 +6,75 @@ import Modal from "./components/Modal";
 import Badge from "./components/Badge";
 import Timer from "./components/Timer";
 
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
+
 function App() {
+  const { t } = useTranslation();
   const [taskName, setTaskName] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-neutral-50 p-8">
       <div className="max-w-4xl mx-auto space-y-6">
+        {/* Header with Language Switcher */}
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-4xl font-bold text-neutral-900">
+            {t("common.welcome")}
+          </h1>
+          <LanguageSwitcher />
+        </div>
+
         {/* Timer */}
         <Card>
-          <h2 className="text-2xl font-bold mb-4">Timer</h2>
+          <h2 className="text-2xl font-bold mb-4 text-neutral-900">
+            {t("timer.title")}
+          </h2>
           <Timer
-            duration={1800} // 30 minutes
-            onComplete={() => alert("Time is up!")}
+            duration={1800}
+            onComplete={() => alert(t("timer.complete"))}
           />
         </Card>
 
         {/* Badges */}
         <Card>
-          <h2 className="text-2xl font-bold mb-4">Badges</h2>
+          <h2 className="text-neutral-900 text-2xl font-bold mb-4">
+            {t("badges.title")}
+          </h2>
           <div className="flex flex-wrap gap-2">
-            <Badge variant="default">Level 5</Badge>
-            <Badge variant="success">Active</Badge>
-            <Badge variant="warning">Break</Badge>
-            <Badge variant="danger">Incomplete</Badge>
-            <Badge variant="info">New Feature</Badge>
+            <Badge variant="default">{t("badges.level", { level: 5 })}</Badge>
+            <Badge variant="success">{t("badges.active")}</Badge>
+            <Badge variant="warning">{t("badges.break")}</Badge>
+            <Badge variant="danger">{t("badges.incomplete")}</Badge>
+            <Badge variant="info">{t("badges.newFeature")}</Badge>
             <Badge variant="success" size="sm">
-              Small
+              {t("badges.small")}
             </Badge>
             <Badge variant="success" size="lg">
-              Large
+              {t("badges.large")}
             </Badge>
           </div>
         </Card>
 
         {/* Modal Demo */}
         <Card>
-          <h2 className="text-2xl font-bold mb-4">Modal</h2>
-          <Button onClick={() => setIsModalOpen(true)}>Open Modal</Button>
+          <h2 className="text-2xl font-bold mb-4 text-neutral-900">
+            {t("modal.title")}
+          </h2>
+          <Button onClick={() => setIsModalOpen(true)}>
+            {t("modal.openButton")}
+          </Button>
         </Card>
 
         {/* Input Examples */}
         <Card>
-          <h2 className="text-2xl font-bold mb-4">Input Fields</h2>
+          <h2 className="text-2xl font-bold mb-4 text-neutral-900">
+            {t("input.title")}
+          </h2>
           <div className="space-y-4">
             <Input
-              label="Task Name"
-              placeholder="What are you working on?"
+              label={t("input.taskLabel")}
+              placeholder={t("input.taskPlaceholder")}
               value={taskName}
               onChange={setTaskName}
               required
@@ -65,25 +87,23 @@ function App() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title="Check-in Time!"
+        title={t("modal.checkInTitle")}
         size="md"
       >
         <div className="space-y-4">
-          <p className="text-gray-600">
-            Show your partner what you've accomplished!
-          </p>
+          <p className="text-neutral-600">{t("modal.checkInMessage")}</p>
           <Input
-            label="What did you complete?"
-            placeholder="Describe your progress..."
+            label={t("modal.completedLabel")}
+            placeholder={t("modal.completedPlaceholder")}
             value=""
             onChange={() => {}}
           />
           <div className="flex justify-end gap-2">
             <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
-              Cancel
+              {t("common.cancel")}
             </Button>
             <Button variant="primary" onClick={() => setIsModalOpen(false)}>
-              Submit
+              {t("common.submit")}
             </Button>
           </div>
         </div>
