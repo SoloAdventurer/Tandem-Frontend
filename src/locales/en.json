@@ -39,5 +39,58 @@
     "duration": "Session Duration",
     "workingOn": "What are you working on?",
     "confirmPartner": "Confirm your partner was present"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Customize your Tandem experience",
+    "appearance": {
+      "title": "Appearance",
+      "subtitle": "Choose your preferred theme",
+      "active": "Active"
+    },
+    "themes": {
+      "light": {
+        "name": "Light",
+        "description": "Clean and bright for daytime use"
+      },
+      "dark": {
+        "name": "Dark",
+        "description": "Easy on the eyes for night sessions"
+      },
+      "highContrast": {
+        "name": "High Contrast",
+        "description": "Maximum readability and accessibility"
+      },
+      "ocean": {
+        "name": "Ocean",
+        "description": "Calm blue tones for deep focus"
+      },
+      "forest": {
+        "name": "Forest",
+        "description": "Natural green for a zen workflow"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "enable": {
+        "label": "Enable Notifications",
+        "description": "Get notified when your partner joins or needs a check-in"
+      },
+      "sound": {
+        "label": "Sound Effects",
+        "description": "Play sounds for session start, check-ins, and completion"
+      }
+    },
+    "language": {
+      "title": "Language",
+      "subtitle": "Choose your preferred language"
+    },
+    "about": {
+      "title": "About Tandem",
+      "version": "Version",
+      "build": "Build",
+      "feedback": "Send Feedback"
+    },
+    "currentTheme": "Currently using <strong>{{themeName}}</strong> theme {{icon}}"
   }
 }

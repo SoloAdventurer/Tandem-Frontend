@@ -3,8 +3,7 @@
 /* 1. This MUST be the very first line */
 @import "tailwindcss";
 
-/* 2. This is your new theme.
-   Your editor might underline @theme, but it will work. */
+/* 2. Tailwind theme colors */
 @theme {
   /* Primary */
   --color-primary-50: #eff6ff;
@@ -67,15 +66,219 @@
   --color-neutral-900: #1c1917;
 }
 
-/* 3. The rest of your styles are perfectly fine */
+/* ====================================
+   THEME DEFINITIONS
+   ==================================== */
+
+/* Light Theme (Default) */
+:root,
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary: #fafaf9;
+  --bg-secondary: #f5f5f4;
+  --bg-tertiary: #ffffff;
+  --bg-hover: #e7e5e4;
+
+  /* Text */
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-tertiary: #78716c;
+  --text-inverse: #ffffff;
+
+  /* Borders */
+  --border-primary: #e7e5e4;
+  --border-secondary: #d6d3d1;
+  --border-focus: #3b82f6;
+
+  /* Accent/Brand */
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-light: #dbeafe;
+
+  /* Status Colors */
+  --success: #22c55e;
+  --success-bg: #dcfce7;
+  --warning: #f59e0b;
+  --warning-bg: #fef3c7;
+  --danger: #ef4444;
+  --danger-bg: #fee2e2;
+  --info: #3b82f6;
+  --info-bg: #dbeafe;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-primary: #1c1917;
+  --bg-secondary: #292524;
+  --bg-tertiary: #44403c;
+  --bg-hover: #57534e;
+
+  /* Text */
+  --text-primary: #fafaf9;
+  --text-secondary: #d6d3d1;
+  --text-tertiary: #a8a29e;
+  --text-inverse: #1c1917;
+
+  /* Borders */
+  --border-primary: #44403c;
+  --border-secondary: #57534e;
+  --border-focus: #60a5fa;
+
+  /* Accent/Brand */
+  --accent: #60a5fa;
+  --accent-hover: #3b82f6;
+  --accent-light: #1e3a8a;
+
+  /* Status Colors */
+  --success: #4ade80;
+  --success-bg: #14532d;
+  --warning: #fbbf24;
+  --warning-bg: #451a03;
+  --danger: #f87171;
+  --danger-bg: #7f1d1d;
+  --info: #60a5fa;
+  --info-bg: #1e3a8a;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+}
+
+/* High Contrast Theme (for accessibility) */
+[data-theme="high-contrast"] {
+  /* Backgrounds */
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #333333;
+  --bg-hover: #4d4d4d;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-tertiary: #cccccc;
+  --text-inverse: #000000;
+
+  /* Borders */
+  --border-primary: #ffffff;
+  --border-secondary: #cccccc;
+  --border-focus: #00ff00;
+
+  /* Accent/Brand */
+  --accent: #00ff00;
+  --accent-hover: #00cc00;
+  --accent-light: #003300;
+
+  /* Status Colors */
+  --success: #00ff00;
+  --success-bg: #003300;
+  --warning: #ffff00;
+  --warning-bg: #333300;
+  --danger: #ff0000;
+  --danger-bg: #330000;
+  --info: #00ffff;
+  --info-bg: #003333;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 0.2);
+  --shadow-md: 0 4px 6px -1px rgb(255 255 255 / 0.15);
+  --shadow-lg: 0 10px 15px -3px rgb(255 255 255 / 0.1);
+}
+
+/* Ocean Theme */
+[data-theme="ocean"] {
+  /* Backgrounds */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-hover: #475569;
+
+  /* Text */
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #0f172a;
+
+  /* Borders */
+  --border-primary: #334155;
+  --border-secondary: #475569;
+  --border-focus: #06b6d4;
+
+  /* Accent/Brand */
+  --accent: #06b6d4;
+  --accent-hover: #0891b2;
+  --accent-light: #164e63;
+
+  /* Status Colors */
+  --success: #10b981;
+  --success-bg: #064e3b;
+  --warning: #f59e0b;
+  --warning-bg: #451a03;
+  --danger: #ef4444;
+  --danger-bg: #7f1d1d;
+  --info: #06b6d4;
+  --info-bg: #164e63;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(6 182 212 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(6 182 212 / 0.2);
+  --shadow-lg: 0 10px 15px -3px rgb(6 182 212 / 0.3);
+}
+
+/* Forest Theme */
+[data-theme="forest"] {
+  /* Backgrounds */
+  --bg-primary: #14532d;
+  --bg-secondary: #166534;
+  --bg-tertiary: #15803d;
+  --bg-hover: #16a34a;
+
+  /* Text */
+  --text-primary: #f0fdf4;
+  --text-secondary: #bbf7d0;
+  --text-tertiary: #86efac;
+  --text-inverse: #14532d;
+
+  /* Borders */
+  --border-primary: #15803d;
+  --border-secondary: #16a34a;
+  --border-focus: #4ade80;
+
+  /* Accent/Brand */
+  --accent: #4ade80;
+  --accent-hover: #22c55e;
+  --accent-light: #052e16;
+
+  /* Status Colors */
+  --success: #4ade80;
+  --success-bg: #052e16;
+  --warning: #fbbf24;
+  --warning-bg: #451a03;
+  --danger: #f87171;
+  --danger-bg: #7f1d1d;
+  --info: #22d3ee;
+  --info-bg: #164e63;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(74 222 128 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(74 222 128 / 0.2);
+  --shadow-lg: 0 10px 15px -3px rgb(74 222 128 / 0.3);
+}
+
+/* ====================================
+   BASE STYLES
+   ==================================== */
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -83,65 +286,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: transparent;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #0811ba;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
+/* RTL Support */
 [dir="rtl"] {
   direction: rtl;
   text-align: right;
@@ -149,4 +303,42 @@ button:focus-visible {
 
 [dir="rtl"] .flex-row-reverse {
   flex-direction: row-reverse;
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent);
+  color: var(--text-inverse);
+}
+
+/* Scrollbar (Webkit) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
 }

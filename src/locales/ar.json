@@ -39,5 +39,58 @@
     "duration": "مدة الجلسة",
     "workingOn": "ماذا تعمل؟",
     "confirmPartner": "أكد حضور شريكك"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "subtitle": "خصص تجربة تاندم الخاصة بك",
+    "appearance": {
+      "title": "المظهر",
+      "subtitle": "اختر السمة المفضلة لديك",
+      "active": "نشط"
+    },
+    "themes": {
+      "light": {
+        "name": "فاتح",
+        "description": "نظيف ومشرق للاستخدام النهاري"
+      },
+      "dark": {
+        "name": "داكن",
+        "description": "مريح للعينين لجلسات الليل"
+      },
+      "highContrast": {
+        "name": "تباين عالي",
+        "description": "أقصى قدر من الوضوح وسهولة الوصول"
+      },
+      "ocean": {
+        "name": "محيط",
+        "description": "ألوان زرقاء هادئة للتركيز العميق"
+      },
+      "forest": {
+        "name": "غابة",
+        "description": "أخضر طبيعي لتدفق عمل هادئ"
+      }
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "enable": {
+        "label": "تفعيل الإشعارات",
+        "description": "احصل على إشعار عندما ينضم شريكك أو يحتاج إلى تسجيل وصول"
+      },
+      "sound": {
+        "label": "المؤثرات الصوتية",
+        "description": "تشغيل الأصوات لبدء الجلسة وتسجيلات الوصول والإكمال"
+      }
+    },
+    "language": {
+      "title": "اللغة",
+      "subtitle": "اختر لغتك المفضلة"
+    },
+    "about": {
+      "title": "حول تاندم",
+      "version": "الإصدار",
+      "build": "البناء",
+      "feedback": "إرسال ملاحظات"
+    },
+    "currentTheme": "تستخدم حاليًا سمة <strong>{{themeName}}</strong> {{icon}}"
   }
 }
