@@ -26,7 +26,7 @@ By having to show your work, you're less likely to procrastinate (nobody wants t
 ## 🛠️ Getting Started
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/tandem-frontend.git
+git clone https://github.com/SoloAdventurer/tandem-frontend.git
 
 # Navigate to project
 cd tandem-frontend
