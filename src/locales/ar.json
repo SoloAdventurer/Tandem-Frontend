@@ -92,5 +92,14 @@
       "feedback": "إرسال ملاحظات"
     },
     "currentTheme": "تستخدم حاليًا سمة <strong>{{themeName}}</strong> {{icon}}"
+  },
+   "home": {
+    "welcome": "مرحباً!",
+    "subtitle": "هل أنت مستعد للعثور على شريك دراسة وإنجاز المهام؟",
+    "startSession": "ابدأ جلسة جديدة",
+    "recentActivity": "النشاطات الأخيرة",
+    "noActivity": "لا توجد نشاطات حديثة بعد.",
+    "recentPartners": "الشركاء الأخيرون",
+    "noPartners": "لا يوجد شركاء حديثون بعد."
   }
 }

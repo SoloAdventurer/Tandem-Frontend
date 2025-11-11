@@ -179,7 +179,7 @@ const Toggle: React.FC<ToggleProps> = ({
           style={{
             width: `${config.knob * 0.5}px`,
             height: `${config.knob * 0.5}px`,
-            opacity: enabled ? 0 : 0.4,
+            opacity: enabled ? 0 : 1,
             transform: enabled
               ? "scale(0.3) rotate(180deg)"
               : "scale(1) rotate(0deg)",

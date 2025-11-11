@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
 }) => {
   const baseStyles =
-    "px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "px-8 py-4 rounded-lg font-bold transition-all duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2";
 
   const variants = {
     primary:

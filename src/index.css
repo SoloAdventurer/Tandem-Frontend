@@ -367,3 +367,89 @@ html {
     transform: translateY(0);
   }
 }
+
+/* --- Typewriter Animation (From User) --- */
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    /* Animate to 100% of its own content, not a fixed width */
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    border-color: transparent;
+  }
+
+  50% {
+    /* Use theme variable for the cursor */
+    border-color: var(--text-primary);
+  }
+}
+
+/* Base class for any typewriter element */
+.typewriter {
+  /* This is the magic: */
+  overflow: hidden;
+  /* Don't show text until width expands */
+  white-space: nowrap;
+  /* Keep it all on one line */
+
+  /* The animated cursor */
+  border-right: 3px solid var(--text-primary);
+
+  /* Use CSS variables passed from React */
+  /* 1. Animate 'typing' using the --duration and --char-count */
+  /* 2. Animate 'blink' 3x, then stop (looks more professional) */
+  animation:
+    typing var(--duration, 2s) steps(var(--char-count, 20)) forwards,
+    blink 0.5s 3;
+
+  /* Start with zero width */
+  width: 0;
+
+  /* Handle animation delay (for the subtitle) */
+  animation-delay: var(--delay, 0s);
+
+  /* Ensure text direction (LTR/RTL) is inherited */
+  direction: inherit;
+}
+
+/* Typewriter that loops infinitely with 5s pause, no cursor */
+.typewriter-loop {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  direction: inherit;
+  display: inline-block;
+  /* This allows proper width calculation */
+  max-width: 100%;
+  /* Prevent going beyond container */
+
+  animation: typing-with-pause var(--total-duration, 7s) infinite;
+  animation-delay: var(--delay, 0s);
+  animation-timing-function: steps(var(--char-count, 20));
+}
+
+@keyframes typing-with-pause {
+  0% {
+    width: 0;
+  }
+
+  /* Type to 100% in first 30% of animation */
+  30% {
+    width: 100%;
+  }
+
+  /* Stay at 100% for remaining 70% (includes the 5s pause) */
+  100% {
+    width: 100%;
+  }
+}
