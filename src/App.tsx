@@ -1,6 +1,8 @@
+import React from "react";
 import { ThemeProvider, useTheme } from "./providers/ThemeProvider";
-import SettingsPage from "./pages/Settings";
 import BackgroundCanvas from "./components/BackgroundCanvas";
+import BottomNav from "./components/navigation/BottomNav";
+import ProfilePage from "./pages/Profile";
 
 /**
  * Inner component that has access to theme context
@@ -8,14 +10,26 @@ import BackgroundCanvas from "./components/BackgroundCanvas";
  */
 function AppContent() {
   const { theme } = useTheme();
+  const [currentPage, setCurrentPage] = React.useState<
+    "home" | "analytics" | "start" | "solo" | "profile"
+  >("home");
 
   return (
     <>
+      {/** Bottom Navigation */}
+      <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+
       {/** Starry background - sits behind everything */}
       <BackgroundCanvas theme={theme} />
 
-      {/** Your settings page on top */}
-      <SettingsPage />
+      {/** Page content with smooth transitions */}
+      <div className="page-transition">
+        {currentPage === "profile" && <ProfilePage />}
+        {currentPage === "home" && <div>Home Page (Coming Soon)</div>}
+        {currentPage === "analytics" && <div>Analytics Page (Coming Soon)</div>}
+        {currentPage === "start" && <div>Start Page (Coming Soon)</div>}
+        {currentPage === "solo" && <div>Solo Page (Coming Soon)</div>}
+      </div>
     </>
   );
 }

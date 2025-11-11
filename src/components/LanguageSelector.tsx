@@ -21,6 +21,7 @@ const LanguageSelector: React.FC = () => {
             <h2
               className="text-xl font-semibold"
               style={{ color: "var(--text-primary)" }}
+              id="language-heading"
             >
               {t("settings.language.title")}
             </h2>

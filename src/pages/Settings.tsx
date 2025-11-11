@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme, themeInfo } from "../providers/ThemeProvider";
 import ThemeCard from "../components/ThemeCard";
@@ -69,6 +69,34 @@ const SettingsPage = () => {
   const { t, i18n } = useTranslation();
   const { theme, setTheme, themes } = useTheme();
 
+  // Create a ref for the grid container
+  const themeGridRef = useRef<HTMLDivElement>(null);
+
+  // Handler for keyboard navigation
+  const handleThemeKeyNavigation = (e: React.KeyboardEvent) => {
+    // We only care about arrow keys
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) {
+      return;
+    }
+
+    // Stop the page from scrolling
+    e.preventDefault();
+
+    const currentIndex = themes.indexOf(theme);
+    const totalThemes = themes.length;
+    let nextIndex;
+
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      nextIndex = (currentIndex + 1) % totalThemes;
+    } else {
+      // ArrowLeft or ArrowUp
+      nextIndex = (currentIndex - 1 + totalThemes) % totalThemes;
+    }
+
+    // Set the new theme
+    setTheme(themes[nextIndex]);
+  };
+
   useEffect(() => {
     document.documentElement.setAttribute(
       "dir",
@@ -82,21 +110,12 @@ const SettingsPage = () => {
       style={{ backgroundColor: "transparent" }}
     >
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <h1
-            className="text-3xl md:text-4xl font-bold mb-2"
-            style={{ color: "var(--text-primary)" }}
-          >
-            {t("settings.title")}
-          </h1>
-          <p style={{ color: "var(--text-secondary)" }}>
-            {t("settings.subtitle")}
-          </p>
-        </div>
-
         {/* Theme Section */}
-        <section className="mb-8">
+        <section
+          className="mb-8"
+          tabIndex={0}
+          aria-labelledby="appearance-heading"
+        >
           <div
             className="p-6 rounded-lg mb-6"
             style={{
@@ -108,6 +127,7 @@ const SettingsPage = () => {
               <span className="text-2xl">🎨</span>
               <div>
                 <h2
+                  id="appearance-heading"
                   className="text-xl font-semibold"
                   style={{ color: "var(--text-primary)" }}
                 >
@@ -123,7 +143,14 @@ const SettingsPage = () => {
             </div>
 
             {/* Theme Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+              ref={themeGridRef}
+              onKeyDown={handleThemeKeyNavigation}
+              tabIndex={0}
+              role="grid"
+              aria-label="Theme selection grid"
+            >
               {themes.map((t) => {
                 const info = themeInfo[t];
                 const colors = themeColorPreviews[t];
@@ -149,13 +176,32 @@ const SettingsPage = () => {
         </section>
 
         {/* Language Section */}
-        <LanguageSelector />
+        <section
+          className="mb-8"
+          tabIndex={0} // <-- Make section focusable
+          aria-labelledby="language-heading" // <-- For accessibility
+        >
+          {/* We'll assume LanguageSelector renders its own h2 with id="language-heading" */}
+          <LanguageSelector />
+        </section>
 
         {/* Notifications Section */}
-        <NotificationSettings />
+        <section
+          className="mb-8"
+          tabIndex={0} // <-- Make section focusable
+          aria-labelledby="notifications-heading" // <-- For accessibility
+        >
+          <NotificationSettings />
+        </section>
 
         {/* About Section */}
-        <AboutSection />
+        <section
+          className="mb-16"
+          tabIndex={0} // <-- Make section focusable
+          aria-labelledby="about-heading" // <-- For accessibility
+        >
+          <AboutSection />
+        </section>
       </div>
     </div>
   );

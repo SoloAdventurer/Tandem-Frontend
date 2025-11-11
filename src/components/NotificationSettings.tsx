@@ -18,6 +18,7 @@ const NotificationSettings: React.FC = () => {
           <h2
             className="text-xl font-semibold"
             style={{ color: "var(--text-primary)" }}
+            id="notifications-heading"
           >
             {t("settings.notifications.title")}
           </h2>
@@ -41,6 +42,7 @@ const NotificationSettings: React.FC = () => {
               enabled={notificationsEnabled}
               onChange={setNotificationsEnabled}
               ariaLabel={t("settings.notifications.enable.label")}
+              size="md"
             />
           </div>
 

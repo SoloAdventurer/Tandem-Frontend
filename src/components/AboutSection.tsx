@@ -15,6 +15,7 @@ const AboutSection: React.FC = () => {
           <h2
             className="text-xl font-semibold"
             style={{ color: "var(--text-primary)" }}
+            id="about-heading"
           >
             {t("settings.about.title")}
           </h2>

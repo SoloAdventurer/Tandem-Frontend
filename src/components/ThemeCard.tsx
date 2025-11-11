@@ -33,24 +33,37 @@ const ThemeCard: React.FC<ThemeCardProps> = ({
   return (
     <button
       onClick={onSelect}
-      className="relative text-left overflow-hidden rounded-lg border-2 transition-all hover:scale-105 focus:scale-105 group"
+      className={`
+        relative text-left overflow-hidden rounded-lg border-2 
+        transition-all duration-300 ease-in-out group
+        ${isActive ? "-translate-y-0.5" : ""}
+        hover:-translate-y-1 hover:shadow-xl
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
+        focus-visible:ring-[var(--border-focus)] focus-visible:-translate-y-2
+      `}
       style={{
         borderColor: isActive ? "var(--accent)" : "var(--border-primary)",
         boxShadow: isActive ? "var(--shadow-lg)" : "var(--shadow-sm)",
         minHeight: "180px",
       }}
+      aria-label={`${t(
+        "settings.appearance.select",
+        "Select theme"
+      )}: ${themeName}`}
     >
       {/* LAYER 1: Background Image */}
       {colors.backgroundImage && (
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500"
+          className="absolute inset-0 bg-cover bg-center opacity-40 
+                     group-hover:opacity-60 group-hover:scale-110 
+                     transition-all duration-500"
           style={{
             backgroundImage: `url(${colors.backgroundImage})`,
           }}
         />
       )}
 
-      {/* LAYER 2: Gradient Overlay with higher opacity for better contrast */}
+      {/* LAYER 2: Gradient Overlay */}
       <div
         className="absolute inset-0"
         style={{
@@ -58,18 +71,21 @@ const ThemeCard: React.FC<ThemeCardProps> = ({
         }}
       />
 
-      {/* LAYER 3: Content with strong shadows for readability */}
+      {/* LAYER 3: Content */}
       <div className="relative p-4 z-10">
         {/* Theme Icon & Name */}
         <div className="flex items-center gap-3 mb-2">
           <span
-            className="text-3xl drop-shadow-lg"
+            className="text-3xl drop-shadow-lg 
+                       transition-transform duration-300 ease-in-out 
+                       group-hover:scale-110"
             style={{
               filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
             }}
           >
             {themeIcon}
           </span>
+          {/* ... (Theme Name and Active badge) */}
           <div className="flex-1">
             <div
               className="font-semibold flex items-center gap-2 flex-wrap"
@@ -113,7 +129,7 @@ const ThemeCard: React.FC<ThemeCardProps> = ({
             className="w-8 h-8 rounded border-2 shadow-md"
             style={{
               backgroundColor: colors.accent,
-              borderColor: "rgba(255, 255, 255, 0.3)",
+              borderColor: "rgba(0, 0, 0, 0.15)", // <-- CHANGED
             }}
             title="Accent color"
           />
@@ -121,7 +137,7 @@ const ThemeCard: React.FC<ThemeCardProps> = ({
             className="w-8 h-8 rounded border-2 shadow-md"
             style={{
               backgroundColor: colors.bgSecondary,
-              borderColor: "rgba(255, 255, 255, 0.3)",
+              borderColor: "rgba(0, 0, 0, 0.15)", // <-- CHANGED
             }}
             title="Background color"
           />
@@ -129,7 +145,7 @@ const ThemeCard: React.FC<ThemeCardProps> = ({
             className="w-8 h-8 rounded border-2 shadow-md"
             style={{
               backgroundColor: colors.success,
-              borderColor: "rgba(255, 255, 255, 0.3)",
+              borderColor: "rgba(0, 0, 0, 0.15)", // <-- CHANGED
             }}
             title="Success color"
           />
