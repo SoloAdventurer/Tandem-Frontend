@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Home, BarChart3, Rocket, Timer, User } from "lucide-react";
 
 interface BottomNavProps {
-  currentPage: "home" | "analytics" | "start" | "solo" | "profile";
+  currentPage: "home" | "analytics" | "start" | "session" | "profile";
   onNavigate: (
-    page: "home" | "analytics" | "start" | "solo" | "profile"
+    page: "home" | "analytics" | "start" | "session" | "profile"
   ) => void;
 }
 
@@ -30,9 +30,9 @@ const BottomNav: React.FC<BottomNavProps> = ({ currentPage, onNavigate }) => {
       label: t("nav.start", "Start"),
     },
     {
-      id: "solo" as const,
+      id: "session" as const,
       icon: Timer,
-      label: t("nav.solo", "Solo"),
+      label: t("nav.session"),
     },
     {
       id: "profile" as const,

@@ -6,6 +6,7 @@ import BackgroundCanvas from "./components/BackgroundCanvas";
 import BottomNav from "./components/navigation/BottomNav";
 import ProfilePage from "./pages/Profile";
 import HomePage from "./pages/HomePage";
+import StartPage from "./pages/StartPage";
 
 /**
  * Inner component that has access to theme context
@@ -14,7 +15,7 @@ import HomePage from "./pages/HomePage";
 function AppContent() {
   const { theme } = useTheme();
   const [currentPage, setCurrentPage] = React.useState<
-    "home" | "analytics" | "start" | "solo" | "profile"
+    "home" | "analytics" | "start" | "session" | "profile"
   >("home");
   const { i18n } = useTranslation();
 
@@ -39,8 +40,12 @@ function AppContent() {
         {currentPage === "profile" && <ProfilePage />}
         {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
         {currentPage === "analytics" && <div>Analytics Page (Coming Soon)</div>}
-        {currentPage === "start" && <div>Start Page (Coming Soon)</div>}
-        {currentPage === "solo" && <div>Solo Page (Coming Soon)</div>}
+        {currentPage === "start" && (
+          <div>
+            <StartPage onNavigate={setCurrentPage} />
+          </div>
+        )}
+        {currentPage === "session" && <div>Session Page (Coming Soon)</div>}
       </div>
     </>
   );

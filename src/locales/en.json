@@ -4,7 +4,7 @@
     "home": "Home",
     "analytics": "Analytics",
     "start": "Start",
-    "solo": "Solo"
+    "session": "Session"
   },
   "profile": {
     "title": "Profile",
@@ -118,5 +118,26 @@
     "recentPartners": "Recent Partners",
     "noPartners": "No recent partners yet.",
     "tandem": "Tandem"
+  },
+  "start": {
+    "title": "Start New Session",
+    "subtitle": "Find a study partner in the next 2 minutes",
+    "duration": {
+      "label": "Session Duration"
+    },
+    "workStyle": {
+      "label": "Work Style Preference",
+      "deepFocus": "Deep Focus",
+      "checkIns": "Occasional Check-ins",
+      "collaborative": "Collaborative"
+    },
+    "goal": {
+      "label": "What will you work on?",
+      "placeholder": "e.g., Study for Biology midterm - reviewing chapters 5-7",
+      "characters": "characters"
+    },
+    "info": "You'll be matched with a partner who has similar availability and work style. Both of you will confirm each other's presence at the end.",
+    "findPartner": "Find Partner",
+    "validation": "Please describe what you'll work on to continue"
   }
 }

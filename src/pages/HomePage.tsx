@@ -6,7 +6,7 @@ import WelcomeModal from "../components/WelcomeModal";
 
 interface HomePageProps {
   onNavigate: (
-    page: "home" | "analytics" | "start" | "solo" | "profile"
+    page: "home" | "analytics" | "start" | "session" | "profile"
   ) => void;
 }
 
