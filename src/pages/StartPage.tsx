@@ -19,9 +19,9 @@ const StartPage: React.FC<StartPageProps> = ({ onNavigate }) => {
 
   // Duration options
   const durationOptions = [
-    { label: "25 min", value: 25 },
-    { label: "50 min", value: 50 },
-    { label: "90 min", value: 90 },
+    { label: t("start.duration.25min", "25 min"), value: 25 },
+    { label: t("start.duration.50min", "50 min"), value: 50 },
+    { label: t("start.duration.90min", "90 min"), value: 90 },
   ];
 
   // Work style options
@@ -49,7 +49,7 @@ const StartPage: React.FC<StartPageProps> = ({ onNavigate }) => {
   const isFormValid = studyGoal.trim().length > 0;
 
   return (
-    <div className="max-w-2xl mx-auto px-4 pt-8 pb-24">
+    <div className="max-w-5xl mx-auto px-4 pt-8 pb-24">
       {/* Page Header */}
       <div className="mb-8">
         <h1
@@ -146,8 +146,8 @@ const StartPage: React.FC<StartPageProps> = ({ onNavigate }) => {
           onClick={handleFindPartner}
           disabled={!isFormValid}
         >
-          <span className="flex items-center justify-center text-xl font-semibold px-8 py-2">
-            <Search className="mr-2 h-5 w-5" />
+          <span className="flex items-center justify-center sm:text-xl md:text-2xl font-semibold px-8 py-2">
+            <Search className="mr-2 h-7 w-7" />
             {t("start.findPartner", "Find Partner")}
           </span>
         </Button>
