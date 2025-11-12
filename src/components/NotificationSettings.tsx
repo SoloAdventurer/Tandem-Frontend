@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Toggle from "./Toggle";
+import Toggle from "./ui/Toggle";
 
 const NotificationSettings: React.FC = () => {
   const { t } = useTranslation();

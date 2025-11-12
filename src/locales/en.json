@@ -1,4 +1,20 @@
 {
+  "nav": {
+    "profile": "Profile",
+    "home": "Home",
+    "analytics": "Analytics",
+    "start": "Start",
+    "solo": "Solo"
+  },
+  "profile": {
+    "title": "Profile",
+    "level": "Level",
+    "editProfile": "Edit Profile",
+    "reputation": "Reputation",
+    "completion": "Completion",
+    "sessions": "Sessions",
+    "memberSince": "Member Since"
+  },
   "common": {
     "welcome": "Find your study partner in 2 minutes",
     "findPartner": "Find Partner",
@@ -92,5 +108,15 @@
       "feedback": "Send Feedback"
     },
     "currentTheme": "Currently using <strong>{{themeName}}</strong> theme {{icon}}"
+  },
+  "home": {
+    "welcome": "Welcome!",
+    "subtitle": "Ready to find a study partner and get work done?",
+    "startSession": "Start New Session",
+    "recentActivity": "Recent Activity",
+    "noActivity": "No recent activity yet.",
+    "recentPartners": "Recent Partners",
+    "noPartners": "No recent partners yet.",
+    "tandem": "Tandem"
   }
 }

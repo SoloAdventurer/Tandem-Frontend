@@ -1,4 +1,20 @@
 {
+  "nav": {
+    "profile": "الملف الشخصي",
+    "home": "الصفحة الرئيسية",
+    "analytics": "التحليلات",
+    "start": "البداية",
+    "solo": "توقيت"
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "level": "المستوى",
+    "editProfile": "تعديل الملف الشخصي",
+    "reputation": "السمعة",
+    "completion": "نسبة الاكتمال",
+    "sessions": "الجلسات",
+    "memberSince": "عضو منذ"
+  },
   "common": {
     "welcome": "اعثر على شريك الدراسة في دقيقتين",
     "findPartner": "ابحث عن شريك",
@@ -93,13 +109,14 @@
     },
     "currentTheme": "تستخدم حاليًا سمة <strong>{{themeName}}</strong> {{icon}}"
   },
-   "home": {
+  "home": {
     "welcome": "مرحباً!",
     "subtitle": "هل أنت مستعد للعثور على شريك دراسة وإنجاز المهام؟",
     "startSession": "ابدأ جلسة جديدة",
     "recentActivity": "النشاطات الأخيرة",
     "noActivity": "لا توجد نشاطات حديثة بعد.",
     "recentPartners": "الشركاء الأخيرون",
-    "noPartners": "لا يوجد شركاء حديثون بعد."
+    "noPartners": "لا يوجد شركاء حديثون بعد.",
+    "tandem": "تاندم"
   }
 }

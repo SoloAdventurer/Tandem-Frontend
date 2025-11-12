@@ -64,7 +64,7 @@ const ProfilePage: React.FC = () => {
                     color: "var(--accent)",
                   }}
                 >
-                  Level {user.level}
+                  {t("profile.level", "Level")} {user.level}
                 </span>
               </div>
 
@@ -133,7 +133,7 @@ const ProfilePage: React.FC = () => {
 
             {/* Edit Profile Button */}
             <button
-              className="px-6 py-3 rounded-lg font-medium transition-all hover:opacity-90"
+              className="px-6 py-3 rounded-lg font-medium transition-all hover:opacity-85"
               style={{
                 backgroundColor: "var(--bg-tertiary)",
                 color: "var(--text-primary)",

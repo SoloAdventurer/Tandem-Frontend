@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Rocket, List, Users } from "lucide-react";
-import Button from "../components/Button";
+import { Rocket, List, Users, Handshake } from "lucide-react";
+import Button from "../components/ui/Button";
 import WelcomeModal from "../components/WelcomeModal";
 
 interface HomePageProps {
@@ -35,11 +35,18 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* Welcome Modal */}
       {showWelcomeModal && <WelcomeModal onClose={handleCloseWelcome} />}
 
+      <div className="fade-loop flex items-center text-3xl md:text-4xl font-bold px-3 py-3">
+        {t("home.tandem")}
+        <span className="ml-2 mt-2">
+          <Handshake />
+        </span>
+      </div>
+
       <div className="max-w-screen-xl mx-auto px-4 pt-8 pb-24">
         {/* 1. Big Button to Start Page */}
         <div className="my-8 flex justify-center">
           <Button variant="primary" onClick={() => onNavigate("start")}>
-            <span className="flex items-center justify-center text-lg font-semibold px-4 py-1">
+            <span className="flex items-center justify-center text-xl font-semibold px-4 py-1">
               <Rocket className="mr-2 h-5 w-5" />
               {t("home.startSession", "Start New Session")}
             </span>

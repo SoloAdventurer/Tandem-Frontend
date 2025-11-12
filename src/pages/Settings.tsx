@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme, themeInfo } from "../providers/ThemeProvider";
 import ThemeCard from "../components/ThemeCard";
@@ -96,13 +96,6 @@ const SettingsPage = () => {
     // Set the new theme
     setTheme(themes[nextIndex]);
   };
-
-  useEffect(() => {
-    document.documentElement.setAttribute(
-      "dir",
-      i18n.language === "ar" ? "rtl" : "ltr"
-    );
-  }, [i18n.language]);
 
   return (
     <div

@@ -299,10 +299,22 @@ body {
 [dir="rtl"] {
   direction: rtl;
   text-align: right;
+  align-items: center;
 }
 
 [dir="rtl"] .flex-row-reverse {
   flex-direction: row-reverse;
+}
+
+/* For elements with mr-* (margin-right) classes in LTR, swap to margin-left in RTL */
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .mr-3 {
+  margin-right: 0;
+  margin-left: 0.75rem;
 }
 
 /* Focus Styles */
@@ -444,7 +456,7 @@ html {
   }
 
   /* Type to 100% in first 30% of animation */
-  30% {
+  20% {
     width: 100%;
   }
 
@@ -452,4 +464,47 @@ html {
   100% {
     width: 100%;
   }
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  10%,
+  90% {
+    opacity: 1;
+  }
+}
+
+.fade-loop {
+  animation: fadeInOut 8s ease-in-out infinite;
+}
+
+@keyframes swoosh {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+.swoosh-loop {
+  animation: swoosh 8s ease-in-out infinite;
 }

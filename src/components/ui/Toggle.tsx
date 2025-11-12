@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "../providers/ThemeProvider";
+import { useTheme } from "./../../providers/ThemeProvider";
 
 interface ToggleProps {
   enabled: boolean;

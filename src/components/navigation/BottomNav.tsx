@@ -10,7 +10,8 @@ interface BottomNavProps {
 }
 
 const BottomNav: React.FC<BottomNavProps> = ({ currentPage, onNavigate }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = typeof i18n?.dir === "function" ? i18n.dir() === "rtl" : false;
 
   const navItems = [
     {
@@ -42,11 +43,13 @@ const BottomNav: React.FC<BottomNavProps> = ({ currentPage, onNavigate }) => {
 
   return (
     <nav
+      dir={isRTL ? "rtl" : "ltr"}
       className="fixed bottom-0 left-0 right-0 z-50 border-t"
       style={{
         backgroundColor: "var(--bg-secondary)",
         borderColor: "var(--border-primary)",
         boxShadow: "0 -2px 10px rgba(0, 0, 0, 0.1)",
+        textAlign: "center",
       }}
     >
       <div className="max-w-screen-xl mx-auto px-4">
@@ -100,14 +103,6 @@ const BottomNav: React.FC<BottomNavProps> = ({ currentPage, onNavigate }) => {
                 >
                   {item.label}
                 </span>
-
-                {/* Active indicator dot */}
-                {isActive && (
-                  <span
-                    className="absolute bottom-1 w-1 h-1 rounded-full"
-                    style={{ backgroundColor: "var(--accent)" }}
-                  />
-                )}
               </button>
             );
           })}
