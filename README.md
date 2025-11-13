@@ -1,73 +1,106 @@
-# React + TypeScript + Vite
+# Tandem - Fight Procrastination Together
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A productivity platform that matches you with accountability partners to work on similar tasks together.
 
-Currently, two official plugins are available:
+## 🎯 What is Tandem?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tandem fights procrastination through **mutual commitment**. Get matched with someone working on similar goals, work together for a set time, and prove your progress in a quick 2-minute check-in.
 
-## React Compiler
+By having to show your work, you're less likely to procrastinate (nobody wants the embarrassment!).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+- **Smart Matching**: Get paired with users who have similar interests and tasks
+- **Timed Sessions**: Work together for pre-determined focus periods
+- **Check-ins**: 2-minute post-session verification (chat, audio, or both - no video)
+- **Gamification**: Earn XP, level up, and unlock features through consistent work
+- **Private Sessions**: Create invite-only sessions with multiple users
+- **Analytics**: Track your productivity with session history and completion rates
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend**: React + TypeScript
+- **Styling**: Tailwind CSS
+- **Build Tool**: Vite
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Getting Started
+```bash
+# Clone the repository
+git clone https://github.com/SoloAdventurer/tandem-frontend.git
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Navigate to project
+cd tandem-frontend
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📁 Project Structure
 ```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Main application pages
+├── hooks/         # Custom React hooks
+├── types/         # TypeScript type definitions
+└── utils/         # Helper functions
+```
+
+## 🎮 How It Works
+
+1. **Start a Session**: Enter your task(s) and choose your work duration
+2. **Get Matched**: System pairs you with a compatible partner
+3. **Work Together**: Focus on your tasks while your partner does the same
+4. **Check-in**: Verify each other's progress (2 min max)
+5. **Earn Rewards**: Get XP and coins for completed sessions
+
+## 🎨 Design Philosophy
+
+- **Minimal yet engaging** - Clean interface that keeps you focused
+- **Keyboard navigation** - Fast workflow for power users
+- **Real-time updates** - Instant notifications for partner activity
+
+## 🌟 Target Audience
+
+- Students (all grades)
+- Freelancers
+- Remote professionals
+- 9-to-5 workers
+
+## 📊 Gamification System
+
+- **XP Points**: Earned through verified work sessions
+- **Levels**: Higher levels = better matching + more features
+- **Coins**: Purchase customizations and account accessories
+- **Streaks**: Track your consistency
+
+## 🔐 Privacy
+
+- User consent required for storing chats/audio/images
+- All media deleted after 30 days
+- No video calls (privacy-first approach)
+
+## 🚧 Current Status
+
+**MVP Development** - Building core features:
+- ✅ UI Component Library
+- 🚧 Session Management
+- 🚧 Peer Matching System
+- 🚧 Check-in Interface
+- 🚧 Gamification System
+
+## 📝 License
+
+[Choose your license - MIT recommended for open source]
+
+## 🤝 Contributing
+
+This is currently a solo project, but contributions are welcome! Feel free to open issues or submit PRs.
+
+---
+
+**Built with focus. Designed for productivity. Powered by accountability.** 💪
