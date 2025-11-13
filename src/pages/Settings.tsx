@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme, themeInfo } from "../providers/ThemeProvider";
-import ThemeCard from "../components/ThemeCard";
-import LanguageSelector from "../components/LanguageSelector";
-import NotificationSettings from "../components/NotificationSettings";
-import AboutSection from "../components/AboutSection";
+import ThemeCard from "../components/profile/ThemeCard";
+import LanguageSelector from "../components/profile/LanguageSelector";
+import NotificationSettings from "../components/profile/NotificationSettings";
+import AboutSection from "../components/profile/AboutSection";
 
 // Import theme background images
 import lightBg from "../assets/themes/light.jpg";

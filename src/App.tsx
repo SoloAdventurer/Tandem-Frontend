@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ThemeProvider, useTheme } from "./providers/ThemeProvider";
 import { useTranslation } from "react-i18next";
 
-import BackgroundCanvas from "./components/BackgroundCanvas";
+import BackgroundCanvas from "./components/profile/BackgroundCanvas";
 import BottomNav from "./components/navigation/BottomNav";
 import ProfilePage from "./pages/Profile";
 import HomePage from "./pages/HomePage";

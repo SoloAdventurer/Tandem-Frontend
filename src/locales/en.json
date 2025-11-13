@@ -142,5 +142,24 @@
     "info": "You'll be matched with a partner who has similar availability and work style. Both of you will confirm each other's presence at the end.",
     "findPartner": "Find Partner",
     "validation": "Please describe what you'll work on to continue"
+  },
+  "gamification": {
+    "streak": "Study Streak",
+    "keepGoing": "Keep it going!",
+    "startStreak": "Complete a session to start your streak",
+    "nextGoal": "Next goal",
+    "days": "days",
+    "longest": "Longest",
+    "studyTime": "Study Time",
+    "hours": "hours",
+    "thisMonth": "this month",
+    "goal": "Goal",
+    "lifetime": "Lifetime",
+    "level": "Level",
+    "nextLevel": "Next level",
+    "remaining": "remaining",
+    "recentAchievements": "Recent Achievements",
+    "viewAll": "View All",
+    "noAchievements": "Complete sessions to unlock achievements!"
   }
 }
