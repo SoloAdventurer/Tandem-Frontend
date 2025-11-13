@@ -24,6 +24,7 @@ By having to show your work, you're less likely to procrastinate (nobody wants t
 - **Build Tool**: Vite
 
 ## 🛠️ Getting Started
+
 ```bash
 # Clone the repository
 git clone https://github.com/SoloAdventurer/tandem-frontend.git
@@ -41,6 +42,7 @@ npm run dev
 Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
 ## 📁 Project Structure
+
 ```
 src/
 ├── components/     # Reusable UI components
@@ -87,6 +89,7 @@ src/
 ## 🚧 Current Status
 
 **MVP Development** - Building core features:
+
 - ✅ UI Component Library
 - 🚧 Session Management
 - 🚧 Peer Matching System

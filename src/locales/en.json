@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "profile": "Profile",
+    "home": "Home",
+    "analytics": "Analytics",
+    "start": "Start",
+    "session": "Session"
+  },
+  "profile": {
+    "title": "Profile",
+    "level": "Level",
+    "editProfile": "Edit Profile",
+    "reputation": "Reputation",
+    "completion": "Completion",
+    "sessions": "Sessions",
+    "memberSince": "Member Since"
+  },
+  "common": {
+    "welcome": "Find your study partner in 2 minutes",
+    "findPartner": "Find Partner",
+    "cancel": "Cancel",
+    "submit": "Submit"
+  },
+  "timer": {
+    "title": "Timer",
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "complete": "Time is up!"
+  },
+  "badges": {
+    "title": "Badges",
+    "level": "Level {{level}}",
+    "active": "Active",
+    "break": "Break",
+    "incomplete": "Incomplete",
+    "newFeature": "New Feature",
+    "small": "Small",
+    "large": "Large"
+  },
+  "modal": {
+    "title": "Modal",
+    "openButton": "Open Modal",
+    "checkInTitle": "Check-in Time!",
+    "checkInMessage": "Show your partner what you've accomplished!",
+    "completedLabel": "What did you complete?",
+    "completedPlaceholder": "Describe your progress..."
+  },
+  "input": {
+    "title": "Input Fields",
+    "taskLabel": "Task Name",
+    "taskPlaceholder": "What are you working on?"
+  },
+  "session": {
+    "duration": "Session Duration",
+    "workingOn": "What are you working on?",
+    "confirmPartner": "Confirm your partner was present"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Customize your Tandem experience",
+    "appearance": {
+      "title": "Appearance",
+      "subtitle": "Choose your preferred theme",
+      "active": "Active"
+    },
+    "themes": {
+      "light": {
+        "name": "Light",
+        "description": "Clean and bright for daytime use"
+      },
+      "dark": {
+        "name": "Dark",
+        "description": "Easy on the eyes for night sessions"
+      },
+      "highContrast": {
+        "name": "High Contrast",
+        "description": "Maximum readability and accessibility"
+      },
+      "ocean": {
+        "name": "Ocean",
+        "description": "Calm blue tones for deep focus"
+      },
+      "forest": {
+        "name": "Forest",
+        "description": "Natural green for a zen workflow"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "enable": {
+        "label": "Enable Notifications",
+        "description": "Get notified when your partner joins or needs a check-in"
+      },
+      "sound": {
+        "label": "Sound Effects",
+        "description": "Play sounds for session start, check-ins, and completion"
+      }
+    },
+    "language": {
+      "title": "Language",
+      "subtitle": "Choose your preferred language"
+    },
+    "about": {
+      "title": "About Tandem",
+      "version": "Version",
+      "build": "Build",
+      "feedback": "Send Feedback"
+    },
+    "currentTheme": "Currently using <strong>{{themeName}}</strong> theme {{icon}}"
+  },
+  "home": {
+    "welcome": "Welcome!",
+    "subtitle": "Ready to find a study partner and get work done?",
+    "startSession": "Start New Session",
+    "recentActivity": "Recent Activity",
+    "noActivity": "No recent activity yet.",
+    "recentPartners": "Recent Partners",
+    "noPartners": "No recent partners yet.",
+    "tandem": "Tandem"
+  },
+  "start": {
+    "title": "Start New Session",
+    "subtitle": "Find a study partner in the next 2 minutes",
+    "duration": {
+      "label": "Session Duration",
+      "25min": "25 min",
+      "50min": "50 min",
+      "90min": "90 min"
+    },
+    "workStyle": {
+      "label": "Work Style Preference",
+      "deepFocus": "Deep Focus",
+      "checkIns": "Occasional Check-ins",
+      "collaborative": "Collaborative"
+    },
+    "goal": {
+      "label": "What will you work on?",
+      "placeholder": "e.g., Study for Biology midterm - reviewing chapters 5-7",
+      "characters": "characters"
+    },
+    "info": "You'll be matched with a partner who has similar availability and work style. Both of you will confirm each other's presence at the end.",
+    "findPartner": "Find Partner",
+    "validation": "Please describe what you'll work on to continue"
+  }
+}

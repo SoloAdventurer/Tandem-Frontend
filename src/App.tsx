@@ -1,37 +1,61 @@
-import Button from "./components/Button";
-import Card from "./components/Card";
+import React, { useEffect } from "react";
+import { ThemeProvider, useTheme } from "./providers/ThemeProvider";
+import { useTranslation } from "react-i18next";
+
+import BackgroundCanvas from "./components/BackgroundCanvas";
+import BottomNav from "./components/navigation/BottomNav";
+import ProfilePage from "./pages/Profile";
+import HomePage from "./pages/HomePage";
+import StartPage from "./pages/StartPage";
+
+/**
+ * Inner component that has access to theme context
+ * We need this because BackgroundCanvas needs the current theme
+ */
+function AppContent() {
+  const { theme } = useTheme();
+  const [currentPage, setCurrentPage] = React.useState<
+    "home" | "analytics" | "start" | "session" | "profile"
+  >("home");
+  const { i18n } = useTranslation();
+
+  // Correctly mounts the language stored in LocalStorage and the text-direction
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      "dir",
+      i18n.language === "ar" ? "rtl" : "ltr"
+    );
+  }, [i18n.language]);
+
+  return (
+    <>
+      {/** Bottom Navigation */}
+      <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+
+      {/** Starry background - sits behind everything */}
+      <BackgroundCanvas theme={theme} />
+
+      {/** Page content with smooth transitions */}
+      <div className="page-transition">
+        {currentPage === "profile" && <ProfilePage />}
+        {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
+        {currentPage === "analytics" && <div>Analytics Page (Coming Soon)</div>}
+        {currentPage === "start" && (
+          <div>
+            <StartPage onNavigate={setCurrentPage} />
+          </div>
+        )}
+        {currentPage === "session" && <div>Session Page (Coming Soon)</div>}
+      </div>
+    </>
+  );
+}
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-4xl mx-auto space-y-6">
-        {/* Buttons Section */}
-        <Card>
-          <h2 className="text-2xl font-bold mb-4">Buttons</h2>
-          <div className="flex gap-4">
-            <Button variant="primary" onClick={() => alert("Primary!")}>
-              Primary Button
-            </Button>
-            <Button variant="secondary">Secondary Button</Button>
-            <Button variant="danger">Danger Button</Button>
-          </div>
-        </Card>
-
-        {/* Session Card Example */}
-        <Card hover onClick={() => alert("Session clicked!")}>
-          <h3 className="text-xl font-semibold mb-2">Active Session</h3>
-          <p className="text-gray-600">
-            Working with Partner • 45 min remaining
-          </p>
-        </Card>
-
-        {/* Task Card Example */}
-        <Card hover>
-          <h3 className="text-lg font-semibold mb-2">Complete Assignment</h3>
-          <p className="text-sm text-gray-500">Estimated: 2 hours</p>
-        </Card>
-      </div>
-    </div>
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "profile": "الملف الشخصي",
+    "home": "الصفحة الرئيسية",
+    "analytics": "التحليلات",
+    "start": "البداية",
+    "session": "الحصة"
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "level": "المستوى",
+    "editProfile": "تعديل الملف الشخصي",
+    "reputation": "السمعة",
+    "completion": "نسبة الاكتمال",
+    "sessions": "الجلسات",
+    "memberSince": "عضو منذ"
+  },
+  "common": {
+    "welcome": "اعثر على شريك الدراسة في دقيقتين",
+    "findPartner": "ابحث عن شريك",
+    "cancel": "إلغاء",
+    "submit": "إرسال"
+  },
+  "timer": {
+    "title": "المؤقت",
+    "start": "ابدأ",
+    "pause": "إيقاف مؤقت",
+    "reset": "إعادة تعيين",
+    "complete": "انتهى الوقت!"
+  },
+  "badges": {
+    "title": "الشارات",
+    "level": "المستوى {{level}}",
+    "active": "نشط",
+    "break": "استراحة",
+    "incomplete": "غير مكتمل",
+    "newFeature": "ميزة جديدة",
+    "small": "صغير",
+    "large": "كبير"
+  },
+  "modal": {
+    "title": "نافذة منبثقة",
+    "openButton": "افتح النافذة",
+    "checkInTitle": "وقت التحقق!",
+    "checkInMessage": "أظهر لشريكك ما أنجزته!",
+    "completedLabel": "ماذا أكملت؟",
+    "completedPlaceholder": "صف تقدمك..."
+  },
+  "input": {
+    "title": "حقول الإدخال",
+    "taskLabel": "اسم المهمة",
+    "taskPlaceholder": "على ماذا تعمل؟"
+  },
+  "session": {
+    "duration": "مدة الجلسة",
+    "workingOn": "ماذا تعمل؟",
+    "confirmPartner": "أكد حضور شريكك"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "subtitle": "خصص تجربة تاندم الخاصة بك",
+    "appearance": {
+      "title": "المظهر",
+      "subtitle": "اختر السمة المفضلة لديك",
+      "active": "نشط"
+    },
+    "themes": {
+      "light": {
+        "name": "فاتح",
+        "description": "نظيف ومشرق للاستخدام النهاري"
+      },
+      "dark": {
+        "name": "داكن",
+        "description": "مريح للعينين لجلسات الليل"
+      },
+      "highContrast": {
+        "name": "تباين عالي",
+        "description": "أقصى قدر من الوضوح وسهولة الوصول"
+      },
+      "ocean": {
+        "name": "محيط",
+        "description": "ألوان زرقاء هادئة للتركيز العميق"
+      },
+      "forest": {
+        "name": "غابة",
+        "description": "أخضر طبيعي لتدفق عمل هادئ"
+      }
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "enable": {
+        "label": "تفعيل الإشعارات",
+        "description": "احصل على إشعار عندما ينضم شريكك أو يحتاج إلى تسجيل وصول"
+      },
+      "sound": {
+        "label": "المؤثرات الصوتية",
+        "description": "تشغيل الأصوات لبدء الجلسة وتسجيلات الوصول والإكمال"
+      }
+    },
+    "language": {
+      "title": "اللغة",
+      "subtitle": "اختر لغتك المفضلة"
+    },
+    "about": {
+      "title": "حول تاندم",
+      "version": "الإصدار",
+      "build": "البناء",
+      "feedback": "إرسال ملاحظات"
+    },
+    "currentTheme": "تستخدم حاليًا سمة <strong>{{themeName}}</strong> {{icon}}"
+  },
+  "home": {
+    "welcome": "مرحباً!",
+    "subtitle": "هل أنت مستعد للعثور على شريك دراسة وإنجاز المهام؟",
+    "startSession": "ابدأ جلسة جديدة",
+    "recentActivity": "النشاطات الأخيرة",
+    "noActivity": "لا توجد نشاطات حديثة بعد.",
+    "recentPartners": "الشركاء الأخيرون",
+    "noPartners": "لا يوجد شركاء حديثون بعد.",
+    "tandem": "تاندم"
+  },
+  "start": {
+    "title": "بدء جلسة جديدة",
+    "subtitle": "اعثر على شريك دراسة في أقل من دقيقتين",
+    "duration": {
+      "label": "مدة الجلسة",
+      "25min": "٢٥ دقيقة",
+      "50min": "٥٠ دقيقة",
+      "90min": "٩٠ دقيقة"
+    },
+    "workStyle": {
+      "label": "أسلوب العمل المفضل",
+      "deepFocus": "تركيز عميق",
+      "checkIns": "تواصل عرضي",
+      "collaborative": "تعاوني"
+    },
+    "goal": {
+      "label": "ماذا ستعمل عليه؟",
+      "placeholder": "مثال: المذاكرة لامتحان الأحياء - مراجعة الفصول 5-7",
+      "characters": "حرف"
+    },
+    "info": "سيتم مطابقتك مع شريك لديه نفس التوقيت وأسلوب العمل. سيقوم كل منكما بتأكيد حضور الآخر في النهاية.",
+    "findPartner": "ابحث عن شريك",
+    "validation": "يرجى وصف ما ستعمل عليه للمتابعة"
+  }
+}
