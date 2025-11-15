@@ -38,7 +38,7 @@ const LevelWidget: React.FC<LevelWidgetProps> = ({
           className="px-3 py-1 rounded-full text-sm font-medium"
           style={{
             backgroundColor: "var(--accent-primary)",
-            color: "var(--bg-primary)",
+            color: "var(--accent-primary)",
           }}
         >
           {levelTitle}

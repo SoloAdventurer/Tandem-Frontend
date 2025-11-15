@@ -6,6 +6,8 @@ import WelcomeModal from "../components/WelcomeModal";
 import StreakWidget from "../components/gamification/StreakWidget";
 import StudyTimeWidget from "../components/gamification/StudyTimeWidget";
 import LevelWidget from "../components/gamification/LevelWidget";
+import AchievementsShowcase from "../components/gamification/AchievementsShowcase";
+import i18n from "../i18n";
 
 interface HomePageProps {
   onNavigate: (
@@ -16,6 +18,8 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const { t } = useTranslation();
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+
+  const isArabic = i18n.language === "ar";
 
   // TODO: Replace with actual API data
   const [userStats, setUserStats] = useState({
@@ -29,6 +33,64 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     levelTitle: "Focused",
   });
 
+  // TODO: Replace with actual API
+  const [achievements, setAchievements] = useState([
+    {
+      id: "first_steps",
+      icon: "🎯",
+      name: "First Steps",
+      description: "Complete your first session",
+      unlocked: true,
+      progress: 1,
+      requirement: 1,
+    },
+    {
+      id: "night_owl",
+      icon: "🦉",
+      name: "Night Owl",
+      description: "Complete 10 sessions after 10pm",
+      unlocked: false,
+      progress: 3,
+      requirement: 10,
+    },
+    {
+      id: "early_bird",
+      icon: "🌅",
+      name: "Early Bird",
+      description: "Complete 10 sessions before 8am",
+      unlocked: false,
+      progress: 0,
+      requirement: 10,
+    },
+    {
+      id: "marathon_runner",
+      icon: "🏃",
+      name: "Marathon Runner",
+      description: "Complete 5 sessions of 90 minutes",
+      unlocked: false,
+      progress: 2,
+      requirement: 5,
+    },
+    {
+      id: "team_player",
+      icon: "🤝",
+      name: "Team Player",
+      description: "Get rated 5 stars by 20 partners",
+      unlocked: false,
+      progress: 5,
+      requirement: 20,
+    },
+    {
+      id: "century_club",
+      icon: "💯",
+      name: "Century Club",
+      description: "Complete 100 sessions total",
+      unlocked: false,
+      progress: 47,
+      requirement: 100,
+    },
+  ]);
+
   useEffect(() => {
     const hasSeenWelcome = localStorage.getItem("hasSeenWelcome");
     if (!hasSeenWelcome) {
@@ -37,6 +99,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
     // TODO: Fetch user stats from API
     // fetchUserStats();
+    // fetchAchievements();
   }, []);
 
   const handleCloseWelcome = () => {
@@ -48,9 +111,9 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     <>
       {showWelcomeModal && <WelcomeModal onClose={handleCloseWelcome} />}
 
-      <div className="fade-loop flex items-center text-3xl md:text-4xl font-bold px-3 py-3">
+      <div className="fade-loop flex items-center text-3xl md:text-4xl font-bold px-2 py-2">
         {t("home.tandem")}
-        <span className="ml-2 mt-2">
+        <span className={isArabic ? "mr-1 mt-2" : "ml-2 mt-2"}>
           <Handshake />
         </span>
       </div>
@@ -65,6 +128,14 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </span>
           </Button>
         </div>
+
+        {/** Achievements Showcase */}
+        <AchievementsShowcase
+          achievements={achievements}
+          onViewAll={() => {
+            /** TODO: Open full achievements modal/page */
+          }}
+        />
 
         {/* Gamification Widgets - 3 column grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
