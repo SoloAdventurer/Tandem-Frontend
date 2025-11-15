@@ -161,5 +161,35 @@
     "recentAchievements": "Recent Achievements",
     "viewAll": "View All",
     "noAchievements": "Complete sessions to unlock achievements!"
+  },
+  "achievements": {
+    "title": "Achievements",
+    "subtitle": "Complete sessions to unlock badges and rewards",
+    "viewAll": "View All",
+    "unlocked": "Unlocked",
+    "firstSteps": {
+      "name": "First Steps",
+      "desc": "Complete your first session"
+    },
+    "nightOwl": {
+      "name": "Night Owl",
+      "desc": "Complete 10 sessions after 10pm"
+    },
+    "earlyBird": {
+      "name": "Early Bird",
+      "desc": "Complete 10 sessions before 8am"
+    },
+    "marathonRunner": {
+      "name": "Marathon Runner",
+      "desc": "Complete 5 sessions of 90 minutes"
+    },
+    "teamPlayer": {
+      "name": "Team Player",
+      "desc": "Get rated 5 stars by 20 partners"
+    },
+    "centuryClub": {
+      "name": "Century Club",
+      "desc": "Complete 100 sessions total"
+    }
   }
 }
