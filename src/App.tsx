@@ -7,19 +7,15 @@ import BottomNav from "./components/navigation/BottomNav";
 import ProfilePage from "./pages/Profile";
 import HomePage from "./pages/HomePage";
 import StartPage from "./pages/StartPage";
+import SignUpPage from "./components/auth/SignUpPage";
 
-/**
- * Inner component that has access to theme context
- * We need this because BackgroundCanvas needs the current theme
- */
 function AppContent() {
   const { theme } = useTheme();
   const [currentPage, setCurrentPage] = React.useState<
-    "home" | "analytics" | "start" | "session" | "profile"
-  >("home");
+    "home" | "analytics" | "start" | "session" | "profile" | "login" | "signup"
+  >("signup"); // Start with signup page
   const { i18n } = useTranslation();
 
-  // Correctly mounts the language stored in LocalStorage and the text-direction
   useEffect(() => {
     document.documentElement.setAttribute(
       "dir",
@@ -29,22 +25,20 @@ function AppContent() {
 
   return (
     <>
-      {/** Bottom Navigation */}
-      <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+      {/* Only show BottomNav when not on auth pages */}
+      {currentPage !== "signup" && currentPage !== "login" && (
+        <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+      )}
 
-      {/** Starry background - sits behind everything */}
       <BackgroundCanvas theme={theme} />
 
-      {/** Page content with smooth transitions */}
       <div className="page-transition">
+        {currentPage === "signup" && <SignUpPage onNavigate={setCurrentPage} />}
+        {currentPage === "login" && <div>Login Page (Coming Soon)</div>}
         {currentPage === "profile" && <ProfilePage />}
         {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
         {currentPage === "analytics" && <div>Analytics Page (Coming Soon)</div>}
-        {currentPage === "start" && (
-          <div>
-            <StartPage onNavigate={setCurrentPage} />
-          </div>
-        )}
+        {currentPage === "start" && <StartPage onNavigate={setCurrentPage} />}
         {currentPage === "session" && <div>Session Page (Coming Soon)</div>}
       </div>
     </>

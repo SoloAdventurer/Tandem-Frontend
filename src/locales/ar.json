@@ -1,4 +1,28 @@
 {
+  "auth": {
+    "name": "الاسم",
+    "namePlaceholder": "أدخل اسمك",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "your@university.edu",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "8 أحرف على الأقل",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "signingUp": "جارٍ التسجيل...",
+    "loggingIn": "جارٍ تسجيل الدخول...",
+    "signup": {
+      "title": "إنشاء حساب",
+      "subtitle": "انضم إلى تاندم واعثر على شريك الدراسة",
+      "button": "تسجيل",
+      "haveAccount": "هل لديك حساب بالفعل؟"
+    },
+    "login": {
+      "title": "مرحباً بعودتك",
+      "subtitle": "سجل الدخول لمتابعة جلسات الدراسة",
+      "button": "تسجيل الدخول",
+      "noAccount": "ليس لديك حساب؟"
+    }
+  },
   "nav": {
     "profile": "الملف الشخصي",
     "home": "الصفحة الرئيسية",

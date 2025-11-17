@@ -1,4 +1,28 @@
 {
+  "auth": {
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "email": "Email",
+    "emailPlaceholder": "your@university.edu",
+    "password": "Password",
+    "passwordPlaceholder": "At least 8 characters",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter password",
+    "signingUp": "Signing up...",
+    "loggingIn": "Logging in...",
+    "signup": {
+      "title": "Create Account",
+      "subtitle": "Join Tandem and find your study partner",
+      "button": "Sign Up",
+      "haveAccount": "Already have an account?"
+    },
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Log in to continue your study sessions",
+      "button": "Log In",
+      "noAccount": "Don't have an account?"
+    }
+  },
   "nav": {
     "profile": "Profile",
     "home": "Home",
