@@ -8,6 +8,7 @@ import ProfilePage from "./pages/Profile";
 import HomePage from "./pages/HomePage";
 import StartPage from "./pages/StartPage";
 import SignUpPage from "./components/auth/SignUpPage";
+import LoginPage from "./components/auth/LoginPage";
 
 function AppContent() {
   const { theme } = useTheme();
@@ -34,7 +35,7 @@ function AppContent() {
 
       <div className="page-transition">
         {currentPage === "signup" && <SignUpPage onNavigate={setCurrentPage} />}
-        {currentPage === "login" && <div>Login Page (Coming Soon)</div>}
+        {currentPage === "login" && <LoginPage onNavigate={setCurrentPage} />}
         {currentPage === "profile" && <ProfilePage />}
         {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
         {currentPage === "analytics" && <div>Analytics Page (Coming Soon)</div>}

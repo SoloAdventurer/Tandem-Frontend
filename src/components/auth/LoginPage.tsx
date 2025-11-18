@@ -1,77 +1,69 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "../ui/Button";
+import { signIn, useSession } from "../../lib/auth-client";
 import {
-  type SignupFieldErrors,
-  validateSignUpForm,
+  type LoginFieldErrors,
+  validateLoginForm,
 } from "../../validation/SignupValidation";
-import { authClient, useSession } from "../../lib/auth-client";
 
-interface SignUpPageProps {
+interface LoginPageProps {
   onNavigate: (page: "home" | "login" | "signup") => void;
 }
 
-const SignUpPage: React.FC<SignUpPageProps> = ({ onNavigate }) => {
+const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
   const { t } = useTranslation();
   const { refetch: refetchSession } = useSession();
 
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<string[]>([]);
-  const [fieldErrors, setFieldErrors] = useState<SignupFieldErrors>({});
+  const [fieldErrors, setFieldErrors] = useState<LoginFieldErrors>({});
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (loading) return;
-    handleSignUp();
+    handleLogin();
   };
 
-  const handleSignUp = async () => {
+  const handleLogin = async () => {
     if (loading) return;
 
     setSuccessMessage("");
     setFormErrors([]);
     setFieldErrors({});
 
-    const validation = validateSignUpForm(
-      name,
-      email,
-      password,
-      confirmPassword
-    );
+    const validation = validateLoginForm(email, password);
+
     if (!validation.isValid) {
-      setFieldErrors(validation.fieldErrors);
       setFormErrors(validation.errors);
+      setFieldErrors(validation.fieldErrors);
       return;
     }
 
     setLoading(true);
 
     try {
-      // Use Better Auth client
-      const { error: authError } = await authClient.signUp.email({
+      const { error } = await signIn.email({
         email,
         password,
-        name,
       });
 
-      if (authError) {
+      if (error) {
         throw new Error(
-          authError.message ||
-            t("auth.messages.genericError", "Something went wrong. Please try again."),
+          error.message ||
+            t("auth.messages.invalidCredentials", "Email or password incorrect"),
         );
       }
 
       await refetchSession();
 
-      setFieldErrors({});
       setFormErrors([]);
+      setFieldErrors({});
       setSuccessMessage(
-        t("auth.signup.successHint", "Account created! Redirecting..."),
+        t("auth.login.successHint", "Welcome back! Redirecting..."),
       );
 
       window.setTimeout(() => {
@@ -82,7 +74,7 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onNavigate }) => {
         setFormErrors([err.message]);
       } else {
         setFormErrors([
-          t("auth.messages.genericError", "Something went wrong. Please try again."),
+          t("auth.messages.invalidCredentials", "Email or password incorrect"),
         ]);
       }
     } finally {
@@ -109,39 +101,16 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onNavigate }) => {
           className="text-3xl font-bold text-center mb-2"
           style={{ color: "var(--text-primary)" }}
         >
-          {t("auth.signup.title", "Create Account")}
+          {t("auth.login.title", "Welcome back")}
         </h1>
         <p
           className="text-center mb-6"
           style={{ color: "var(--text-secondary)" }}
         >
-          {t("auth.signup.subtitle", "Join Tandem and find your study partner")}
+          {t("auth.login.subtitle", "Sign in to continue your study streak")}
         </p>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
-          <div>
-            <label
-              className="block text-sm font-medium mb-2"
-              style={{ color: "var(--text-primary)" }}
-            >
-              {t("auth.name", "Name")}
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder={t("auth.namePlaceholder", "Enter your name")}
-              className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2"
-              style={getInputStyles(Boolean(fieldErrors.name))}
-              aria-invalid={Boolean(fieldErrors.name)}
-            />
-            {fieldErrors.name && (
-              <p className="mt-1 text-sm" style={{ color: "var(--danger)" }}>
-                {fieldErrors.name}
-              </p>
-            )}
-          </div>
-
           <div>
             <label
               className="block text-sm font-medium mb-2"
@@ -191,32 +160,6 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onNavigate }) => {
             )}
           </div>
 
-          <div>
-            <label
-              className="block text-sm font-medium mb-2"
-              style={{ color: "var(--text-primary)" }}
-            >
-              {t("auth.confirmPassword", "Confirm Password")}
-            </label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder={t(
-                "auth.confirmPasswordPlaceholder",
-                "Re-enter password"
-              )}
-              className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2"
-              style={getInputStyles(Boolean(fieldErrors.confirmPassword))}
-              aria-invalid={Boolean(fieldErrors.confirmPassword)}
-            />
-            {fieldErrors.confirmPassword && (
-              <p className="mt-1 text-sm" style={{ color: "var(--danger)" }}>
-                {fieldErrors.confirmPassword}
-              </p>
-            )}
-          </div>
-
           {successMessage && (
             <div
               className="rounded-lg p-3 text-sm"
@@ -249,8 +192,8 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onNavigate }) => {
           <div className="text-center mt-6">
             <Button variant="primary" type="submit" disabled={loading}>
               {loading
-                ? t("auth.signingUp", "Signing up...")
-                : t("auth.signup.button", "Sign Up")}
+                ? t("auth.loggingIn", "Signing in...")
+                : t("auth.login.button", "Sign In")}
             </Button>
           </div>
         </form>
@@ -259,13 +202,13 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onNavigate }) => {
           className="text-center text-sm mt-6"
           style={{ color: "var(--text-secondary)" }}
         >
-          {t("auth.signup.haveAccount", "Already have an account?")}{" "}
+          {t("auth.login.noAccount", "Need an account?")}{" "}
           <button
-            onClick={() => onNavigate("login")}
+            onClick={() => onNavigate("signup")}
             className="font-medium hover:underline"
             style={{ color: "var(--accent)" }}
           >
-            {t("auth.login.button", "Log In")}
+            {t("auth.signup.button", "Sign Up")}
           </button>
         </p>
       </div>
@@ -273,4 +216,5 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onNavigate }) => {
   );
 };
 
-export default SignUpPage;
+export default LoginPage;
+

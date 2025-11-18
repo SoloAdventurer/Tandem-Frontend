@@ -14,13 +14,20 @@
       "title": "Create Account",
       "subtitle": "Join Tandem and find your study partner",
       "button": "Sign Up",
-      "haveAccount": "Already have an account?"
+      "haveAccount": "Already have an account?",
+      "successHint": "Account created! Redirecting..."
     },
     "login": {
       "title": "Welcome Back",
       "subtitle": "Log in to continue your study sessions",
       "button": "Log In",
-      "noAccount": "Don't have an account?"
+      "noAccount": "Don't have an account?",
+      "successHint": "Welcome back! Redirecting..."
+    },
+    "messages": {
+      "invalidCredentials": "Email or password incorrect",
+      "genericError": "Something went wrong. Please try again.",
+      "signupAutoLoginFailure": "Account created, but automatic sign-in failed. Please sign in manually."
     }
   },
   "nav": {

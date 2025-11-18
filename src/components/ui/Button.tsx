@@ -5,6 +5,7 @@ interface ButtonProps {
   variant?: "primary" | "secondary" | "success" | "danger" | "ghost";
   onClick?: () => void;
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -12,6 +13,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   onClick,
   disabled,
+  type = "button",
 }) => {
   const baseStyles =
     "px-8 py-4 rounded-lg font-bold transition-all duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2";
@@ -31,6 +33,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
       className={`${baseStyles} ${variants[variant]} ${
