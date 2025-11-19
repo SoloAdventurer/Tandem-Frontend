@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { ThemeProvider, useTheme } from "./providers/ThemeProvider";
 import { useTranslation } from "react-i18next";
+import { useSession } from "./lib/auth-client";
 
 import BackgroundCanvas from "./components/profile/BackgroundCanvas";
 import BottomNav from "./components/navigation/BottomNav";
@@ -16,6 +17,19 @@ function AppContent() {
     "home" | "analytics" | "start" | "session" | "profile" | "login" | "signup"
   >("signup"); // Start with signup page
   const { i18n } = useTranslation();
+  const { data: session, isPending } = useSession();
+
+  useEffect(() => {
+    if (isPending) return;
+    if (session) {
+      setCurrentPage("home");
+    } else {
+      // If no session, we can stay on signup or redirect to login/signup
+      // For now, we'll keep the default "signup" if they are on a protected route,
+      // but if we want to be smarter we could check the current page.
+      // Since currentPage defaults to "signup", we are good.
+    }
+  }, [session, isPending]);
 
   useEffect(() => {
     document.documentElement.setAttribute(
@@ -26,22 +40,30 @@ function AppContent() {
 
   return (
     <>
-      {/* Only show BottomNav when not on auth pages */}
-      {currentPage !== "signup" && currentPage !== "login" && (
-        <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+      {isPending ? (
+        <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "var(--bg-primary)", color: "var(--text-primary)" }}>
+          Loading...
+        </div>
+      ) : (
+        <>
+          {/* Only show BottomNav when not on auth pages */}
+          {currentPage !== "signup" && currentPage !== "login" && (
+            <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+          )}
+
+          <BackgroundCanvas theme={theme} />
+
+          <div className="page-transition">
+            {currentPage === "signup" && <SignUpPage onNavigate={setCurrentPage} />}
+            {currentPage === "login" && <LoginPage onNavigate={setCurrentPage} />}
+            {currentPage === "profile" && <ProfilePage onNavigate={setCurrentPage} />}
+            {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
+            {currentPage === "analytics" && <div>Analytics Page (Coming Soon)</div>}
+            {currentPage === "start" && <StartPage onNavigate={setCurrentPage} />}
+            {currentPage === "session" && <div>Session Page (Coming Soon)</div>}
+          </div>
+        </>
       )}
-
-      <BackgroundCanvas theme={theme} />
-
-      <div className="page-transition">
-        {currentPage === "signup" && <SignUpPage onNavigate={setCurrentPage} />}
-        {currentPage === "login" && <LoginPage onNavigate={setCurrentPage} />}
-        {currentPage === "profile" && <ProfilePage />}
-        {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
-        {currentPage === "analytics" && <div>Analytics Page (Coming Soon)</div>}
-        {currentPage === "start" && <StartPage onNavigate={setCurrentPage} />}
-        {currentPage === "session" && <div>Session Page (Coming Soon)</div>}
-      </div>
     </>
   );
 }

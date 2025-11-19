@@ -1,8 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import SettingsPage from "./Settings";
+import { signOut } from "../lib/auth-client";
 
-const ProfilePage: React.FC = () => {
+interface ProfilePageProps {
+  onNavigate: (page: "home" | "login" | "signup") => void;
+}
+
+const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
   const { t } = useTranslation();
 
   // TODO: Replace with actual user data from auth/context
@@ -16,6 +21,11 @@ const ProfilePage: React.FC = () => {
     completionRate: 92,
     joinDate: "January 2025",
     avatar: "AH", // Initials for avatar
+  };
+
+  const handleLogout = async () => {
+    await signOut();
+    onNavigate("login");
   };
 
   return (
@@ -141,6 +151,19 @@ const ProfilePage: React.FC = () => {
               }}
             >
               {t("profile.editProfile", "Edit Profile")}
+            </button>
+
+            {/* Logout Button */}
+            <button
+              onClick={handleLogout}
+              className="px-6 py-3 rounded-lg font-medium transition-all hover:opacity-85"
+              style={{
+                backgroundColor: "var(--danger)",
+                color: "white",
+                border: "none",
+              }}
+            >
+              {t("profile.logout", "Log Out")}
             </button>
           </div>
         </div>

@@ -85,21 +85,16 @@ export const validateLoginForm = (
   const errors: string[] = [];
   const fieldErrors: LoginFieldErrors = {};
 
-  if (!isValidEmail(email)) {
-    const message = "Email or password incorrect";
-    errors.push(message);
-    fieldErrors.email = message;
+  if (!email.trim()) {
+    fieldErrors.email = "Email is required";
   }
 
-  if (!isValidPassword(password)) {
-    const message =
-      "Password must be 8+ characters with upper, lower, and a number";
-    errors.push(message);
-    fieldErrors.password = message;
+  if (!password) {
+    fieldErrors.password = "Password is required";
   }
 
   return {
-    isValid: errors.length === 0,
+    isValid: Object.keys(fieldErrors).length === 0,
     errors,
     fieldErrors,
   };
