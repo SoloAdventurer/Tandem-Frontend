@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import StartPage from "./pages/StartPage";
 import SignUpPage from "./components/auth/SignUpPage";
 import LoginPage from "./components/auth/LoginPage";
+import AnalyticsPage from "./pages/Analytics";
 
 function AppContent() {
   const { theme } = useTheme();
@@ -58,7 +59,9 @@ function AppContent() {
             {currentPage === "login" && <LoginPage onNavigate={setCurrentPage} />}
             {currentPage === "profile" && <ProfilePage onNavigate={setCurrentPage} />}
             {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
-            {currentPage === "analytics" && <div>Analytics Page (Coming Soon)</div>}
+            {currentPage === "analytics" && (
+              <AnalyticsPage onNavigate={setCurrentPage} />
+            )}
             {currentPage === "start" && <StartPage onNavigate={setCurrentPage} />}
             {currentPage === "session" && <div>Session Page (Coming Soon)</div>}
           </div>
