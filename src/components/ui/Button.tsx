@@ -3,6 +3,7 @@ import React from "react";
 interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "success" | "danger" | "ghost";
+  size?: "sm" | "md" | "lg";
   onClick?: () => void;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
@@ -13,10 +14,17 @@ const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   onClick,
   disabled,
+  size = "md",
   type = "button",
 }) => {
   const baseStyles =
-    "px-8 py-4 rounded-lg font-bold transition-all duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "font-bold transition-all duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg";
+
+  const sizes = {
+    sm: "px-4 py-2 text-sm",
+    md: "px-8 py-4 text-base",
+    lg: "px-10 py-5 text-lg",
+  };
 
   const variants = {
     primary:
@@ -36,9 +44,8 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${baseStyles} ${variants[variant]} ${
-        disabled ? "opacity-50 cursor-not-allowed" : ""
-      }`}
+      className={`${baseStyles} ${sizes[size]} ${variants[variant]} ${disabled ? "opacity-50 cursor-not-allowed" : ""
+        }`}
     >
       {children}
     </button>

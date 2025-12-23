@@ -11,6 +11,8 @@ import StartPage from "./pages/StartPage";
 import SignUpPage from "./components/auth/SignUpPage";
 import LoginPage from "./components/auth/LoginPage";
 import AnalyticsPage from "./pages/Analytics";
+import SessionPage from "./pages/SessionPage";
+import { SessionProvider } from "./providers/SessionProvider";
 
 function AppContent() {
   const { theme } = useTheme();
@@ -63,7 +65,7 @@ function AppContent() {
               <AnalyticsPage onNavigate={setCurrentPage} />
             )}
             {currentPage === "start" && <StartPage onNavigate={setCurrentPage} />}
-            {currentPage === "session" && <div>Session Page (Coming Soon)</div>}
+            {currentPage === "session" && <SessionPage onNavigate={setCurrentPage} />}
           </div>
         </>
       )}
@@ -74,7 +76,9 @@ function AppContent() {
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <SessionProvider>
+        <AppContent />
+      </SessionProvider>
     </ThemeProvider>
   );
 }

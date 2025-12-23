@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Search } from "lucide-react";
 import Button from "../components/ui/Button";
 import SelectableButtonGroup from "../components/ui/SelectableButtonGroup";
+import { useSessionSocket } from "../providers/SessionProvider";
+
 interface StartPageProps {
   onNavigate: (
     page: "home" | "analytics" | "start" | "session" | "profile"
@@ -11,11 +13,13 @@ interface StartPageProps {
 
 const StartPage: React.FC<StartPageProps> = ({ onNavigate }) => {
   const { t } = useTranslation();
+  const { connect, sendMessage, status } = useSessionSocket();
 
   // Form state
   const [duration, setDuration] = useState<number>(25);
   const [workStyle, setWorkStyle] = useState<string>("deep-focus");
   const [studyGoal, setStudyGoal] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Duration options
   const durationOptions = [
@@ -31,19 +35,44 @@ const StartPage: React.FC<StartPageProps> = ({ onNavigate }) => {
     { label: "start.workStyle.collaborative", value: "collaborative" },
   ];
 
-  const handleFindPartner = () => {
-    // TODO: Implement matching logic
-    // For now, just log the preferences
-    console.log({
-      duration,
-      workStyle,
-      studyGoal,
-    });
-
-    // Navigate to matching page (when implemented)
-    // onNavigate("matching");
-    onNavigate("session");
+  const handleFindPartner = async () => {
+    setIsSubmitting(true);
+    if (status !== "connected") {
+      await connect();
+    } else {
+      // Already connected, just send message
+      sendInitSession();
+    }
   };
+
+  const sendInitSession = () => {
+    // Navigate first so SessionPage is mounted to receive the response
+    onNavigate("session");
+    // Small delay to ensure navigation completes before sending
+    setTimeout(() => {
+      sendMessage({
+        type: "init_session",
+        tasks: [studyGoal],
+        focus_duration: convertDuration(duration)
+      });
+    }, 50);
+  };
+
+  const convertDuration = (mins: number) => {
+    // Basic conversion 25 -> 00:25:00
+    // Assuming duration is in minutes.
+    const h = Math.floor(mins / 60);
+    const m = mins % 60;
+    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:00`;
+  }
+
+  useEffect(() => {
+    if (isSubmitting && status === "connected") {
+      sendInitSession();
+      setIsSubmitting(false);
+    }
+  }, [status, isSubmitting]);
+
 
   // Check if form is valid
   const isFormValid = studyGoal.trim().length > 0;
@@ -144,11 +173,11 @@ const StartPage: React.FC<StartPageProps> = ({ onNavigate }) => {
         <Button
           variant="primary"
           onClick={handleFindPartner}
-          disabled={!isFormValid}
+          disabled={!isFormValid || isSubmitting}
         >
           <span className="flex items-center justify-center sm:text-xl md:text-2xl font-semibold px-8 py-2">
             <Search className="mr-2 h-7 w-7" />
-            {t("start.findPartner", "Find Partner")}
+            {isSubmitting ? "Connecting..." : t("start.findPartner", "Find Partner")}
           </span>
         </Button>
       </div>
