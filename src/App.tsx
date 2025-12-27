@@ -13,6 +13,7 @@ import LoginPage from "./components/auth/LoginPage";
 import AnalyticsPage from "./pages/Analytics";
 import SessionPage from "./pages/SessionPage";
 import { SessionProvider } from "./providers/SessionProvider";
+import { FontProvider } from "./providers/FontProvider";
 
 function AppContent() {
   const { theme } = useTheme();
@@ -44,7 +45,13 @@ function AppContent() {
   return (
     <>
       {isPending ? (
-        <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "var(--bg-primary)", color: "var(--text-primary)" }}>
+        <div
+          className="min-h-screen flex items-center justify-center"
+          style={{
+            backgroundColor: "var(--bg-primary)",
+            color: "var(--text-primary)",
+          }}
+        >
           Loading...
         </div>
       ) : (
@@ -57,15 +64,25 @@ function AppContent() {
           <BackgroundCanvas theme={theme} />
 
           <div className="page-transition">
-            {currentPage === "signup" && <SignUpPage onNavigate={setCurrentPage} />}
-            {currentPage === "login" && <LoginPage onNavigate={setCurrentPage} />}
-            {currentPage === "profile" && <ProfilePage onNavigate={setCurrentPage} />}
+            {currentPage === "signup" && (
+              <SignUpPage onNavigate={setCurrentPage} />
+            )}
+            {currentPage === "login" && (
+              <LoginPage onNavigate={setCurrentPage} />
+            )}
+            {currentPage === "profile" && (
+              <ProfilePage onNavigate={setCurrentPage} />
+            )}
             {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
             {currentPage === "analytics" && (
               <AnalyticsPage onNavigate={setCurrentPage} />
             )}
-            {currentPage === "start" && <StartPage onNavigate={setCurrentPage} />}
-            {currentPage === "session" && <SessionPage onNavigate={setCurrentPage} />}
+            {currentPage === "start" && (
+              <StartPage onNavigate={setCurrentPage} />
+            )}
+            {currentPage === "session" && (
+              <SessionPage onNavigate={setCurrentPage} />
+            )}
           </div>
         </>
       )}
@@ -76,9 +93,11 @@ function AppContent() {
 function App() {
   return (
     <ThemeProvider>
-      <SessionProvider>
-        <AppContent />
-      </SessionProvider>
+      <FontProvider>
+        <SessionProvider>
+          <AppContent />
+        </SessionProvider>
+      </FontProvider>
     </ThemeProvider>
   );
 }

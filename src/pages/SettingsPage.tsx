@@ -5,7 +5,6 @@ import ThemeCard from "../components/profile/ThemeCard";
 import LanguageSelector from "../components/profile/LanguageSelector";
 import NotificationSettings from "../components/profile/NotificationSettings";
 import AboutSection from "../components/profile/AboutSection";
-import FontSelector from "../components/ui/FontSelector";
 
 // Import theme background images
 import lightBg from "../assets/themes/light.jpg";
@@ -13,6 +12,7 @@ import darkBg from "../assets/themes/dark.jpg";
 import oceanBg from "../assets/themes/ocean-wave.jpg";
 import forestBg from "../assets/themes/forest.jpg";
 import contrastBg from "../assets/themes/contrast.jpg";
+import FontSelector from "../components/ui/FontSelector";
 
 // Theme color and background configuration
 const themeColorPreviews = {
@@ -186,14 +186,6 @@ const SettingsPage = () => {
           aria-labelledby="notifications-heading" // <-- For accessibility
         >
           <NotificationSettings />
-        </section>
-
-        <section
-          className="mb-8"
-          tabIndex={0}
-          aria-labelledby="typeography-heading"
-        >
-          <FontSelector />
         </section>
 
         {/* About Section */}
