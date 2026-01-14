@@ -1,5 +1,8 @@
 # Tandem - Fight Procrastination Together
-![tandem_frontend](https://github.com/user-attachments/assets/8b529e87-30c2-4544-80a5-256f9ed96843)
+
+
+https://github.com/user-attachments/assets/847e744c-6f46-4170-95dd-0c2bd6d50a04
+
 
 A productivity platform that matches you with accountability partners to work on similar tasks together.
 
