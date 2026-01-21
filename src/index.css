@@ -276,7 +276,13 @@
    ==================================== */
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-english: 'Inter', sans-serif;
+    /* Or your specific font */
+    --font-arabic: 'Readex Pro', sans-serif;
+  
+    /* Use this for the body */
+    --font-main: var(--font-english);
+
   line-height: 1.5;
   font-weight: 400;
 
@@ -293,13 +299,18 @@ body {
   background-color: transparent;
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-main), system-ui, -apple-system, sans-serif;
 }
 
 /* RTL Support */
 [dir="rtl"] {
   direction: rtl;
   text-align: right;
-  align-items: center;
+}
+
+[dir="rtl"],
+[lang="ar"] {
+  --font-main: var(--font-arabic);
 }
 
 [dir="rtl"] .flex-row-reverse {

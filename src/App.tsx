@@ -1,25 +1,40 @@
 import React, { useEffect } from "react";
 import { ThemeProvider, useTheme } from "./providers/ThemeProvider";
 import { useTranslation } from "react-i18next";
+import { useSession } from "./lib/auth-client";
 
-import BackgroundCanvas from "./components/BackgroundCanvas";
+import BackgroundCanvas from "./components/profile/BackgroundCanvas";
 import BottomNav from "./components/navigation/BottomNav";
 import ProfilePage from "./pages/Profile";
 import HomePage from "./pages/HomePage";
 import StartPage from "./pages/StartPage";
+import SignUpPage from "./components/auth/SignUpPage";
+import LoginPage from "./components/auth/LoginPage";
+import AnalyticsPage from "./pages/Analytics";
+import SessionPage from "./pages/SessionPage";
+import { SessionProvider } from "./providers/SessionProvider";
+import { FontProvider } from "./providers/FontProvider";
 
-/**
- * Inner component that has access to theme context
- * We need this because BackgroundCanvas needs the current theme
- */
 function AppContent() {
   const { theme } = useTheme();
   const [currentPage, setCurrentPage] = React.useState<
-    "home" | "analytics" | "start" | "session" | "profile"
-  >("home");
+    "home" | "analytics" | "start" | "session" | "profile" | "login" | "signup"
+  >("signup"); // Start with signup page
   const { i18n } = useTranslation();
+  const { data: session, isPending } = useSession();
 
-  // Correctly mounts the language stored in LocalStorage and the text-direction
+  useEffect(() => {
+    if (isPending) return;
+    if (session) {
+      setCurrentPage("home");
+    } else {
+      // If no session, we can stay on signup or redirect to login/signup
+      // For now, we'll keep the default "signup" if they are on a protected route,
+      // but if we want to be smarter we could check the current page.
+      // Since currentPage defaults to "signup", we are good.
+    }
+  }, [session, isPending]);
+
   useEffect(() => {
     document.documentElement.setAttribute(
       "dir",
@@ -29,24 +44,48 @@ function AppContent() {
 
   return (
     <>
-      {/** Bottom Navigation */}
-      <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+      {isPending ? (
+        <div
+          className="min-h-screen flex items-center justify-center"
+          style={{
+            backgroundColor: "var(--bg-primary)",
+            color: "var(--text-primary)",
+          }}
+        >
+          Loading...
+        </div>
+      ) : (
+        <>
+          {/* Only show BottomNav when not on auth pages */}
+          {currentPage !== "signup" && currentPage !== "login" && (
+            <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+          )}
 
-      {/** Starry background - sits behind everything */}
-      <BackgroundCanvas theme={theme} />
+          <BackgroundCanvas theme={theme} />
 
-      {/** Page content with smooth transitions */}
-      <div className="page-transition">
-        {currentPage === "profile" && <ProfilePage />}
-        {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
-        {currentPage === "analytics" && <div>Analytics Page (Coming Soon)</div>}
-        {currentPage === "start" && (
-          <div>
-            <StartPage onNavigate={setCurrentPage} />
+          <div className="page-transition">
+            {currentPage === "signup" && (
+              <SignUpPage onNavigate={setCurrentPage} />
+            )}
+            {currentPage === "login" && (
+              <LoginPage onNavigate={setCurrentPage} />
+            )}
+            {currentPage === "profile" && (
+              <ProfilePage onNavigate={setCurrentPage} />
+            )}
+            {currentPage === "home" && <HomePage onNavigate={setCurrentPage} />}
+            {currentPage === "analytics" && (
+              <AnalyticsPage onNavigate={setCurrentPage} />
+            )}
+            {currentPage === "start" && (
+              <StartPage onNavigate={setCurrentPage} />
+            )}
+            {currentPage === "session" && (
+              <SessionPage onNavigate={setCurrentPage} />
+            )}
           </div>
-        )}
-        {currentPage === "session" && <div>Session Page (Coming Soon)</div>}
-      </div>
+        </>
+      )}
     </>
   );
 }
@@ -54,7 +93,11 @@ function AppContent() {
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <FontProvider>
+        <SessionProvider>
+          <AppContent />
+        </SessionProvider>
+      </FontProvider>
     </ThemeProvider>
   );
 }

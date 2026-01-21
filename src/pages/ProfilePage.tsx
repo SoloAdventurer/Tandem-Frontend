@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import SettingsPage from "./Settings";
+import SettingsPage from "./SettingsPage";
 import { signOut } from "../lib/auth-client";
 
 interface ProfilePageProps {
